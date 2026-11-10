@@ -1,0 +1,105 @@
+<main>
+  <div class="container">
+    <nav class="crumbs" aria-label="Putanja" data-crumbs></nav>
+
+    <section class="pdp">
+      <div class="pdp__gallery">
+        <div class="pdp__track" data-pdp-track></div>
+        <span class="tag" data-pdp-tag hidden></span>
+        <span class="pdp__count" data-pdp-count></span>
+        <div class="pdp__dots" data-pdp-dots aria-hidden="true"></div>
+      </div>
+
+      <div class="pdp__info">
+        <p class="eyebrow" data-pdp-cat></p>
+        <h1 class="pdp__title" data-pdp-title></h1>
+        <p class="pdp__meta"><span>Boja: <strong data-pdp-color></strong></span><span>Šifra: <span data-pdp-sku></span></span></p>
+        <p class="pdp__price" data-pdp-price></p>
+        <p class="pdp__desc" data-pdp-desc></p>
+
+        <div class="opt" data-pdp-colors-wrap>
+          <div class="opt__head"><span>Isti model u drugim bojama</span><span class="opt__hint" data-pdp-colors-count></span></div>
+          <div class="swatches" data-pdp-swatches></div>
+        </div>
+
+        <div class="opt">
+          <div class="opt__head"><span>Veličina: <strong data-size-name>Izaberi</strong></span><a href="#" class="opt__link"><svg><use href="#i-ruler"/></svg>Tabela veličina</a></div>
+          <div class="sizes" data-sizes role="radiogroup" aria-label="Izaberi veličinu"></div>
+          <p class="opt__error" data-size-error hidden>Molimo izaberi veličinu.</p>
+        </div>
+
+        <div class="pdp__buy">
+          <button class="btn btn--dark btn--block" data-add><svg><use href="#i-bag"/></svg>Dodaj u korpu</button>
+          <button class="square-btn" aria-label="Dodaj u listu želja" data-pdp-wish data-wish=""><svg><use href="#i-heart"/></svg></button>
+        </div>
+
+        <ul class="pdp__perks">
+          <li><svg><use href="#i-truck"/></svg>Dostava za 1–3 radna dana</li>
+          <li><svg><use href="#i-return"/></svg>Zamena i povrat 14 dana</li>
+          <li><svg><use href="#i-card"/></svg>Plaćanje karticom ili pouzećem</li>
+        </ul>
+
+        <div class="accordion">
+          <details open>
+            <summary>Detalji proizvoda <svg><use href="#i-plus"/></svg></summary>
+            <ul class="dash-list" data-pdp-details></ul>
+          </details>
+          <details>
+            <summary>Materijal i održavanje <svg><use href="#i-plus"/></svg></summary>
+            <p data-pdp-care></p>
+          </details>
+          <details>
+            <summary>Dostava i povrat <svg><use href="#i-plus"/></svg></summary>
+            <p>Dostava kurirskom službom na teritoriji Srbije za 1–3 radna dana. Besplatna dostava za porudžbine preko 10.000 RSD. Zamena i povrat u roku od 14 dana.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====== PREPORUKE ====== -->
+  <section class="section rail">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Možda će ti se dopasti</p>
+          <h2 class="h2">Iz iste <em>kolekcije</em></h2>
+        </div>
+        <div class="rail__controls">
+          <div class="rail__arrows only-desktop">
+            <button class="round-btn round-btn--line" aria-label="Nazad" data-rail="-1"><svg style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+            <button class="round-btn round-btn--line" aria-label="Napred" data-rail="1"><svg><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="rail__track" data-rail-track></div>
+      <div class="rail__progress" aria-hidden="true"><span data-rail-bar></span></div>
+    </div>
+  </section>
+
+  <!-- ====== PREDNOSTI ====== -->
+  <section class="perks" aria-label="Prednosti kupovine">
+    <div class="container perks__grid">
+      <div class="perk"><svg><use href="#i-truck"/></svg><div><strong>Besplatna dostava</strong><span>za porudžbine preko 10.000 RSD</span></div></div>
+      <div class="perk"><svg><use href="#i-return"/></svg><div><strong>Zamena i povrat</strong><span>u roku od 14 dana</span></div></div>
+      <div class="perk"><svg><use href="#i-card"/></svg><div><strong>Plaćanje pouzećem</strong><span>ili platnom karticom</span></div></div>
+      <div class="perk"><svg><use href="#i-shield"/></svg><div><strong>Sigurna kupovina</strong><span>zaštićeno SSL plaćanje</span></div></div>
+    </div>
+  </section>
+</main>
+
+<!-- lepljivo dugme (telefon) -->
+<div class="sticky-buy" data-sticky-buy>
+  <img src="" alt="">
+  <div class="sticky-buy__txt"><strong data-sticky-name></strong><span data-sticky-price></span> <span data-sticky-size></span></div>
+  <button class="btn btn--dark" data-sticky-add>Dodaj u korpu</button>
+</div>
+
+<!-- uvećanje slika -->
+<div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-label="Galerija">
+  <button class="icon-btn lightbox__close" aria-label="Zatvori" data-lb-close><svg><use href="#i-close"/></svg></button>
+  <button class="round-btn round-btn--line lightbox__nav lightbox__nav--prev" aria-label="Prethodna" data-lb="-1"><svg style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+  <button class="round-btn round-btn--line lightbox__nav lightbox__nav--next" aria-label="Sledeća" data-lb="1"><svg><use href="#i-arrow"/></svg></button>
+  <div class="lightbox__track" data-lb-track></div>
+  <span class="lightbox__count" data-lb-count></span>
+</div>
