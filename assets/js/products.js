@@ -111,24 +111,59 @@ window.FORTE = (() => {
   const TYPES = { jakna: 'Jakne', prsluk: 'Prsluci', mantil: 'Mantili' };
   const GENDERS = { z: 'Žene', m: 'Muškarci' };
   const CATEGORIES = [
-    { slug: 'zene', name: 'Žene', title: 'Ženske jakne i prsluci', rule: { gender: 'z' }, cover: 'jbeige-2' },
-    { slug: 'muskarci', name: 'Muškarci', title: 'Muške jakne i prsluci', rule: { gender: 'm' }, cover: 'ff/ff2732-1' },
-    { slug: 'prsluci', name: 'Prsluci', title: 'Prsluci', rule: { type: 'prsluk' }, cover: 'pink-5' },
-    { slug: 'outlet', name: 'Outlet', title: 'Outlet', rule: { sale: true }, cover: 'ff/ff1280-1' }
+    { slug: 'zene', name: 'Žene', title: 'Ženske jakne i prsluci', rule: { gender: 'z' }, cover: 'jbeige-2',
+      lead: 'Štepane jakne, puferi i dugi prsluci za grad i hladne dane. Svaka boja je poseban model — izaberi svoju.' },
+    { slug: 'muskarci', name: 'Muškarci', title: 'Muške jakne i prsluci', rule: { gender: 'm' }, cover: 'ff/ff2732-1',
+      lead: 'Zimske jakne, mantili i prsluci čistih linija — topli, praktični i napravljeni da traju.' },
+    { slug: 'prsluci', name: 'Prsluci', title: 'Prsluci', rule: { type: 'prsluk' }, cover: 'pink-5',
+      lead: 'Lagani sloj koji greje telo, a ostavlja ruke slobodnim. Dugi puf prsluci i klasični modeli za nju i za njega.' },
+    { slug: 'outlet', name: 'Outlet', title: 'Outlet', rule: { sale: true }, cover: 'ff/ff1280-1',
+      lead: 'Odabrani modeli po sniženim cenama, dok traju zalihe.' }
   ];
+  /* stranice kataloga koje nisu u tabovima početne */
+  const EXTRA = [
+    { slug: 'novo', name: 'Novo', title: 'Novo u ponudi', rule: { fresh: true }, cover: 'jgrey-3',
+      lead: 'Najnoviji modeli sezone Jesen/Zima 2026 — stižu u ograničenim količinama.' },
+    { slug: 'sve', name: 'Sve', title: 'Cela kolekcija', rule: {}, cover: 'jblack-1',
+      lead: 'Sve jakne, prsluci i mantili na jednom mestu.' }
+  ];
+  const FRESH_FROM = '2026-01-01';
 
   const byId = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
-  const catBySlug = Object.fromEntries(CATEGORIES.map(c => [c.slug, c]));
+  const catBySlug = Object.fromEntries([...CATEGORIES, ...EXTRA].map(c => [c.slug, c]));
   const g = p => GROUPS[p.group];
 
-  /* filter: { kat, gender, type, boja, sale } -> lista proizvoda */
+  /* filter: { kat, gender, type, boja, sale, fresh } -> lista proizvoda */
   const query = (f = {}) => {
     const rule = { ...(f.kat && catBySlug[f.kat] ? catBySlug[f.kat].rule : {}), ...f };
     return PRODUCTS.filter(p =>
       (!rule.gender || g(p).gender === rule.gender) &&
       (!rule.type || g(p).type === rule.type) &&
       (!rule.sale || !!p.was) &&
+      (!rule.fresh || p.added >= FRESH_FROM) &&
       (!rule.boja || slugify(p.color) === rule.boja));
+  };
+
+  /* pretraga: sve reči moraju da se nađu (bez obzira na kvačice) */
+  const norm = s => s.toLowerCase().normalize('NFKD').replace(/đ/g, 'dj').replace(/[̀-ͯ]/g, '');
+  const search = q => {
+    const words = norm(q || '').split(/\s+/).filter(Boolean)
+      .map(w => w.replace(/(i|e|a)$/, '').slice(0, 6) || w); // grubo: "jakne"→"jakn", "crni"→"crn"
+    if (!words.length) return [];
+    return PRODUCTS.filter(p => {
+      const hay = norm([g(p).name, p.color, TYPES[g(p).type], GENDERS[g(p).gender], p.sku, p.was ? 'outlet akcija snizenje' : ''].join(' '));
+      return words.every(w => hay.includes(w));
+    });
+  };
+
+  /* tabela veličina (okvirne mere u cm — zameniti merama proizvođača) */
+  const SIZE_GUIDE = {
+    z: { head: ['Veličina', 'EU', 'Grudi', 'Struk', 'Kukovi'],
+      rows: [['S', '36', '84–88', '66–70', '92–96'], ['M', '38', '88–92', '70–74', '96–100'], ['L', '40', '92–96', '74–78', '100–104'],
+        ['XL', '42', '96–102', '78–84', '104–110'], ['XXL', '44', '102–108', '84–90', '110–116']] },
+    m: { head: ['Veličina', 'EU', 'Grudi', 'Struk', 'Dužina rukava'],
+      rows: [['S', '46', '88–94', '76–82', '62'], ['M', '48', '94–100', '82–88', '63'], ['L', '50', '100–106', '88–94', '64'],
+        ['XL', '52', '106–112', '94–100', '65'], ['XXL', '54', '112–118', '100–106', '66']] }
   };
   const newest = list => [...list].sort((a, b) => b.added.localeCompare(a.added));
   const slugify = s => s.toLowerCase().normalize('NFKD').replace(/đ/g, 'dj').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -149,14 +184,19 @@ window.FORTE = (() => {
 
   const IMG = 'assets/img/';
   return {
-    GROUPS, PRODUCTS, CATEGORIES, TYPES, GENDERS, byId, catBySlug,
+    GROUPS, PRODUCTS, CATEGORIES, EXTRA, TYPES, GENDERS, byId, catBySlug, SIZE_GUIDE,
     SIZES: ['S', 'M', 'L', 'XL', 'XXL'],
     FREE_SHIP: 10000,
-    query, newest, colorsOf, typesOf, slugify, group: g,
+    SHIP_PRICE: 490,          // privremeno — cena dostave ispod praga
+    PROMO: { FORTE10: 10 },   // kod sa newslettera (−10%)
+    query, search, norm, newest, colorsOf, typesOf, slugify, group: g,
     siblings: p => PRODUCTS.filter(x => x.group === p.group),
     title: p => `${g(p).name} – ${p.color}`,
     url: p => `proizvod.html?id=${p.id}`,
-    catUrl: (kat, extra = '') => `index.html?kat=${kat}${extra}#novo`,
+    catUrl: (kat, extra = '') => `kategorija.html?kat=${kat}${extra}`,
+    searchUrl: q => `kategorija.html?q=${encodeURIComponent(q)}`,
+    wishUrl: 'kategorija.html?lista=omiljeno',
+    infoUrl: s => `info.html?strana=${s}`,
     img: (name, sm) => `${IMG}${name}${sm ? '-sm' : ''}.jpg`,
     rsd: n => n.toLocaleString('de-DE') + ' RSD',
     discount: p => p.was ? Math.round((1 - p.price / p.was) * 100) : 0,

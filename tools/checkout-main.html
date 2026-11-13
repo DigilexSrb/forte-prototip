@@ -1,0 +1,129 @@
+<main class="co">
+  <div class="container">
+    <nav class="crumbs" aria-label="Putanja"><a href="index.html">Početna</a><span>/</span><span>Poručivanje</span></nav>
+
+    <div class="co-head" data-co-head>
+      <h1 class="plp-title">Poruči<em>vanje</em></h1>
+      <ol class="co-steps" aria-label="Koraci">
+        <li class="is-done"><span>1</span>Korpa</li>
+        <li class="is-active" data-step="2"><span>2</span>Podaci i dostava</li>
+        <li data-step="3"><span>3</span>Potvrda</li>
+      </ol>
+    </div>
+
+    <!-- prazna korpa -->
+    <div class="plp-empty" data-co-empty hidden>
+      <svg><use href="#i-bag"/></svg>
+      <h2>Tvoja korpa je prazna</h2>
+      <p>Dodaj nešto toplo pre nego što nastaviš na poručivanje.</p>
+      <a href="kategorija.html?kat=novo" class="btn btn--dark">Pogledaj novo</a>
+    </div>
+
+    <div class="co-grid" data-co-grid hidden>
+      <!-- ====== PREGLED PORUDŽBINE ====== -->
+      <aside class="co-sum" aria-label="Pregled porudžbine">
+        <details class="co-sum__box" data-co-sum>
+          <summary class="co-sum__toggle">
+            <span><svg><use href="#i-bag"/></svg><span data-co-toggle-text>Prikaži porudžbinu</span> <svg class="chev"><use href="#i-chev"/></svg></span>
+            <strong data-co-total-top></strong>
+          </summary>
+          <div class="co-sum__body">
+            <h2 class="co-sum__title">Tvoja porudžbina <span data-co-count></span></h2>
+            <div class="co-lines" data-co-lines></div>
+
+            <form class="co-promo" data-co-promo novalidate>
+              <label class="sr-only" for="promo">Kod za popust</label>
+              <input id="promo" type="text" placeholder="Kod za popust" autocomplete="off" autocapitalize="characters">
+              <button class="btn btn--ghost" type="submit">Primeni</button>
+            </form>
+            <p class="co-promo__msg" data-co-promo-msg></p>
+
+            <dl class="co-totals">
+              <div><dt>Međuzbir</dt><dd data-co-sub></dd></div>
+              <div data-co-disc-row hidden><dt>Popust <span data-co-disc-code></span> <button type="button" data-co-promo-rm>Ukloni</button></dt><dd data-co-disc></dd></div>
+              <div><dt>Dostava</dt><dd data-co-ship></dd></div>
+              <div class="co-totals__sum"><dt>Ukupno <small>sa PDV-om</small></dt><dd data-co-total></dd></div>
+            </dl>
+            <div class="ship-meter co-meter">
+              <p data-co-ship-text></p>
+              <div class="ship-meter__bar"><span data-co-ship-bar></span></div>
+            </div>
+          </div>
+        </details>
+      </aside>
+
+      <!-- ====== FORMA ====== -->
+      <form class="co-form" data-co-form novalidate>
+        <section class="co-box">
+          <h2><span>1</span>Kontakt</h2>
+          <div class="fields">
+            <div class="field"><label for="co-email">E-mail</label><input id="co-email" name="email" type="email" autocomplete="email" required><small>Na ovu adresu šaljemo potvrdu porudžbine.</small></div>
+            <div class="field"><label for="co-tel">Telefon</label><input id="co-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="06x xxx xxxx" required><small>Kurir te zove pre isporuke.</small></div>
+          </div>
+        </section>
+
+        <section class="co-box">
+          <h2><span>2</span>Adresa za dostavu</h2>
+          <div class="fields">
+            <div class="field field--half"><label for="co-ime">Ime</label><input id="co-ime" name="ime" autocomplete="given-name" required></div>
+            <div class="field field--half"><label for="co-prezime">Prezime</label><input id="co-prezime" name="prezime" autocomplete="family-name" required></div>
+            <div class="field"><label for="co-adresa">Ulica i broj</label><input id="co-adresa" name="adresa" autocomplete="street-address" required></div>
+            <div class="field field--third"><label for="co-ptt">Poštanski broj</label><input id="co-ptt" name="ptt" inputmode="numeric" autocomplete="postal-code" maxlength="5" required></div>
+            <div class="field field--twothirds"><label for="co-grad">Grad</label><input id="co-grad" name="grad" autocomplete="address-level2" required></div>
+            <div class="field"><label for="co-napomena">Napomena za kurira <em>(opciono)</em></label><textarea id="co-napomena" name="napomena" rows="2" placeholder="npr. sprat, interfon, vreme isporuke"></textarea></div>
+          </div>
+        </section>
+
+        <section class="co-box">
+          <h2><span>3</span>Dostava</h2>
+          <label class="radio is-on">
+            <input type="radio" name="dostava" value="kurir" checked>
+            <span class="radio__dot"></span>
+            <span class="radio__txt"><strong>Kurirska služba</strong><small>Isporuka za 1–3 radna dana na teritoriji Srbije</small></span>
+            <b data-co-ship-opt></b>
+          </label>
+        </section>
+
+        <section class="co-box">
+          <h2><span>4</span>Plaćanje</h2>
+          <div class="radios" data-co-pay>
+            <label class="radio is-on">
+              <input type="radio" name="placanje" value="pouzecem" checked>
+              <span class="radio__dot"></span>
+              <span class="radio__txt"><strong>Plaćanje pouzećem</strong><small>Gotovinom kuriru prilikom preuzimanja</small></span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="placanje" value="kartica">
+              <span class="radio__dot"></span>
+              <span class="radio__txt"><strong>Platnom karticom</strong><small>Visa, Mastercard, DinaCard — preusmeravamo te na sigurnu stranicu banke</small></span>
+              <span class="radio__cards"><i>VISA</i><i>MC</i><i>Dina</i></span>
+            </label>
+          </div>
+        </section>
+
+        <label class="check co-terms"><input type="checkbox" name="uslovi" required><span>Pročitao/la sam i prihvatam <a href="info.html?strana=uslovi" target="_blank">uslove kupovine</a> i <a href="info.html?strana=povrat" target="_blank">pravila povrata</a>.</span></label>
+        <p class="opt__error" data-co-terms-err hidden>Potrebno je da prihvatiš uslove kupovine.</p>
+
+        <button class="btn btn--dark btn--block co-submit" type="submit" data-co-submit><svg><use href="#i-lock"/></svg><span>Poruči</span></button>
+        <p class="co-secure">Prototip — porudžbina se ne šalje. Na stagingu ovde ide prava naplata.</p>
+      </form>
+    </div>
+
+    <!-- ====== POTVRDA ====== -->
+    <section class="co-done" data-co-done hidden tabindex="-1">
+      <span class="co-done__icon"><svg><use href="#i-check"/></svg></span>
+      <p class="eyebrow">Porudžbina <span data-done-no></span></p>
+      <h2 class="h2">Hvala, <em data-done-name></em></h2>
+      <p class="co-done__lead" data-done-lead></p>
+      <div class="co-done__box">
+        <div class="co-lines co-lines--static" data-done-lines></div>
+        <dl class="co-totals" data-done-totals></dl>
+        <div class="co-done__meta" data-done-meta></div>
+      </div>
+      <div class="co-done__cta">
+        <a href="kategorija.html?kat=novo" class="btn btn--dark">Nastavi kupovinu</a>
+        <a href="index.html" class="btn btn--ghost">Početna</a>
+      </div>
+    </section>
+  </div>
+</main>

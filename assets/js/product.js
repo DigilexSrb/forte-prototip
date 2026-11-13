@@ -114,6 +114,25 @@
     $('[data-sticky-size]').textContent = `Veličina ${size}`;
   });
 
+  /* ---------- tabela veličina (fioka) ---------- */
+  const sg = $('[data-size-guide]');
+  const renderGuide = () => {
+    sg.innerHTML = `<p class="sg__lead">${F.GENDERS[g.gender]} · mere tela u cm</p>
+      ${F.ui.sizeGuideHTML(g.gender, size)}
+      <p class="sg__tip">Između dve veličine? Za ${g.type === 'prsluk' ? 'puf prsluke' : 'štepane jakne'} preporučujemo veću — ostaje mesta za džemper.</p>
+      <div class="sg__sizes">${SIZES.map(s => `<button data-sg-size="${s}"${p.out.includes(s) ? ' disabled' : ''} aria-pressed="${s === size}">${s}</button>`).join('')}</div>
+      <a class="link-arrow" href="${F.infoUrl('velicine')}">Kako da se izmeriš ${icon('arrow')}</a>`;
+  };
+  renderGuide();
+  sg.addEventListener('click', e => {
+    const b = e.target.closest('[data-sg-size]');
+    if (!b) return;
+    $(`[data-size="${b.dataset.sgSize}"]`, sizesEl).click();
+    renderGuide();
+    F.ui.close();
+  });
+  sizesEl.addEventListener('click', renderGuide);
+
   const tryAdd = () => {
     if (!size) {
       $('[data-size-error]').hidden = false;

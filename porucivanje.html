@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Poručivanje | FORTE</title>
+  <meta name="description" content="FORTE — ženske jakne i prsluci. Nova kolekcija Jesen/Zima 2026. Besplatna dostava, zamena i povrat u roku od 14 dana.">
+  <meta name="theme-color" content="#121214">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/img/brand/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body class="page-checkout">
+
+<!-- ====== IKONICE (SVG sprite) ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20.5c1.4-3.6 4.4-5.5 8-5.5s6.6 1.9 8 5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12.5H6L5 8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 7h17M3.5 12h17M3.5 17h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M14 6.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="6.5" cy="17" r="1.8" fill="var(--bg)" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="17" r="1.8" fill="var(--bg)" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-return" viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10H8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M8 5L4 9l4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2.5 9.5h19M6 15h4" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6L12 3z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7.5 5.5h3v13h-3zM13.5 5.5h3v13h-3z" fill="currentColor"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21h3z" fill="currentColor"/></symbol>
+  <symbol id="i-tt" viewBox="0 0 24 24"><path d="M16.5 3.5c.4 2.2 1.8 3.6 4 3.9v3c-1.5 0-2.8-.4-4-1.2v6.3a5.5 5.5 0 1 1-5.5-5.5c.3 0 .6 0 .9.1v3.1a2.5 2.5 0 1 0 1.6 2.3V3.5h3z" fill="currentColor"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 15.5L15.5 3 21 8.5 8.5 21 3 15.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 11.5l2 2M10 8.5l1.5 1.5M13 5.5l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-grid1" viewBox="0 0 24 24"><rect x="6" y="3.5" width="12" height="17" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-grid2" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="17" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13.5" y="3.5" width="7" height="17" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-grid3" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="5" height="15" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="9.5" y="4.5" width="5" height="15" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="16.5" y="4.5" width="5" height="15" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 10.5V8a4 4 0 018 0v2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+</svg>
+
+<!-- ====== TOP BAR ====== -->
+<div class="topbar" role="region" aria-label="Obaveštenja">
+  <div class="topbar__track" data-ticker>
+    <p class="is-active">Besplatna dostava za porudžbine preko <strong>10.000 RSD</strong></p>
+    <p>Zamena i povrat u roku od <strong>14 dana</strong></p>
+    <p>Nova kolekcija <strong>Jesen / Zima 2026</strong> je stigla</p>
+  </div>
+</div>
+
+<!-- ====== HEADER ====== -->
+<header class="site-header" data-header>
+  <div class="site-header__inner container">
+    <button class="icon-btn only-mobile" aria-label="Otvori meni" data-open="menu"><svg><use href="#i-menu"/></svg></button>
+
+    <nav class="main-nav only-desktop" aria-label="Glavna navigacija">
+      <ul>
+        <li><a href="kategorija.html?kat=novo">Novo</a></li>
+        <li class="has-mega">
+          <a href="kategorija.html?kat=zene" aria-haspopup="true">Žene <svg class="chev"><use href="#i-chev"/></svg></a>
+          <div class="mega" data-mega="zene"></div>
+        </li>
+        <li class="has-mega">
+          <a href="kategorija.html?kat=muskarci" aria-haspopup="true">Muškarci <svg class="chev"><use href="#i-chev"/></svg></a>
+          <div class="mega" data-mega="muskarci"></div>
+        </li>
+        <li><a href="kategorija.html?kat=prsluci">Prsluci</a></li>
+        <li><a href="kategorija.html?kat=outlet" class="is-sale">Outlet</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html" class="logo" aria-label="FORTE — početna">
+      <span class="logo__mark" aria-hidden="true"></span>
+      <span class="logo__flag" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="Pretraga" data-open="search"><svg><use href="#i-search"/></svg></button>
+      <a class="icon-btn only-desktop" href="#" aria-label="Moj nalog"><svg><use href="#i-user"/></svg></a>
+      <a class="icon-btn only-desktop" href="kategorija.html?lista=omiljeno" aria-label="Lista želja"><svg><use href="#i-heart"/></svg><span class="badge" data-wish-count hidden>0</span></a>
+      <button class="icon-btn" aria-label="Korpa" data-open="cart"><svg><use href="#i-bag"/></svg><span class="badge" data-cart-count hidden>0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- GENERISANO: tools/build-pages.py — ne menjati ručno okvir stranice -->
+<main class="co">
+  <div class="container">
+    <nav class="crumbs" aria-label="Putanja"><a href="index.html">Početna</a><span>/</span><span>Poručivanje</span></nav>
+
+    <div class="co-head" data-co-head>
+      <h1 class="plp-title">Poruči<em>vanje</em></h1>
+      <ol class="co-steps" aria-label="Koraci">
+        <li class="is-done"><span>1</span>Korpa</li>
+        <li class="is-active" data-step="2"><span>2</span>Podaci i dostava</li>
+        <li data-step="3"><span>3</span>Potvrda</li>
+      </ol>
+    </div>
+
+    <!-- prazna korpa -->
+    <div class="plp-empty" data-co-empty hidden>
+      <svg><use href="#i-bag"/></svg>
+      <h2>Tvoja korpa je prazna</h2>
+      <p>Dodaj nešto toplo pre nego što nastaviš na poručivanje.</p>
+      <a href="kategorija.html?kat=novo" class="btn btn--dark">Pogledaj novo</a>
+    </div>
+
+    <div class="co-grid" data-co-grid hidden>
+      <!-- ====== PREGLED PORUDŽBINE ====== -->
+      <aside class="co-sum" aria-label="Pregled porudžbine">
+        <details class="co-sum__box" data-co-sum>
+          <summary class="co-sum__toggle">
+            <span><svg><use href="#i-bag"/></svg><span data-co-toggle-text>Prikaži porudžbinu</span> <svg class="chev"><use href="#i-chev"/></svg></span>
+            <strong data-co-total-top></strong>
+          </summary>
+          <div class="co-sum__body">
+            <h2 class="co-sum__title">Tvoja porudžbina <span data-co-count></span></h2>
+            <div class="co-lines" data-co-lines></div>
+
+            <form class="co-promo" data-co-promo novalidate>
+              <label class="sr-only" for="promo">Kod za popust</label>
+              <input id="promo" type="text" placeholder="Kod za popust" autocomplete="off" autocapitalize="characters">
+              <button class="btn btn--ghost" type="submit">Primeni</button>
+            </form>
+            <p class="co-promo__msg" data-co-promo-msg></p>
+
+            <dl class="co-totals">
+              <div><dt>Međuzbir</dt><dd data-co-sub></dd></div>
+              <div data-co-disc-row hidden><dt>Popust <span data-co-disc-code></span> <button type="button" data-co-promo-rm>Ukloni</button></dt><dd data-co-disc></dd></div>
+              <div><dt>Dostava</dt><dd data-co-ship></dd></div>
+              <div class="co-totals__sum"><dt>Ukupno <small>sa PDV-om</small></dt><dd data-co-total></dd></div>
+            </dl>
+            <div class="ship-meter co-meter">
+              <p data-co-ship-text></p>
+              <div class="ship-meter__bar"><span data-co-ship-bar></span></div>
+            </div>
+          </div>
+        </details>
+      </aside>
+
+      <!-- ====== FORMA ====== -->
+      <form class="co-form" data-co-form novalidate>
+        <section class="co-box">
+          <h2><span>1</span>Kontakt</h2>
+          <div class="fields">
+            <div class="field"><label for="co-email">E-mail</label><input id="co-email" name="email" type="email" autocomplete="email" required><small>Na ovu adresu šaljemo potvrdu porudžbine.</small></div>
+            <div class="field"><label for="co-tel">Telefon</label><input id="co-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="06x xxx xxxx" required><small>Kurir te zove pre isporuke.</small></div>
+          </div>
+        </section>
+
+        <section class="co-box">
+          <h2><span>2</span>Adresa za dostavu</h2>
+          <div class="fields">
+            <div class="field field--half"><label for="co-ime">Ime</label><input id="co-ime" name="ime" autocomplete="given-name" required></div>
+            <div class="field field--half"><label for="co-prezime">Prezime</label><input id="co-prezime" name="prezime" autocomplete="family-name" required></div>
+            <div class="field"><label for="co-adresa">Ulica i broj</label><input id="co-adresa" name="adresa" autocomplete="street-address" required></div>
+            <div class="field field--third"><label for="co-ptt">Poštanski broj</label><input id="co-ptt" name="ptt" inputmode="numeric" autocomplete="postal-code" maxlength="5" required></div>
+            <div class="field field--twothirds"><label for="co-grad">Grad</label><input id="co-grad" name="grad" autocomplete="address-level2" required></div>
+            <div class="field"><label for="co-napomena">Napomena za kurira <em>(opciono)</em></label><textarea id="co-napomena" name="napomena" rows="2" placeholder="npr. sprat, interfon, vreme isporuke"></textarea></div>
+          </div>
+        </section>
+
+        <section class="co-box">
+          <h2><span>3</span>Dostava</h2>
+          <label class="radio is-on">
+            <input type="radio" name="dostava" value="kurir" checked>
+            <span class="radio__dot"></span>
+            <span class="radio__txt"><strong>Kurirska služba</strong><small>Isporuka za 1–3 radna dana na teritoriji Srbije</small></span>
+            <b data-co-ship-opt></b>
+          </label>
+        </section>
+
+        <section class="co-box">
+          <h2><span>4</span>Plaćanje</h2>
+          <div class="radios" data-co-pay>
+            <label class="radio is-on">
+              <input type="radio" name="placanje" value="pouzecem" checked>
+              <span class="radio__dot"></span>
+              <span class="radio__txt"><strong>Plaćanje pouzećem</strong><small>Gotovinom kuriru prilikom preuzimanja</small></span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="placanje" value="kartica">
+              <span class="radio__dot"></span>
+              <span class="radio__txt"><strong>Platnom karticom</strong><small>Visa, Mastercard, DinaCard — preusmeravamo te na sigurnu stranicu banke</small></span>
+              <span class="radio__cards"><i>VISA</i><i>MC</i><i>Dina</i></span>
+            </label>
+          </div>
+        </section>
+
+        <label class="check co-terms"><input type="checkbox" name="uslovi" required><span>Pročitao/la sam i prihvatam <a href="info.html?strana=uslovi" target="_blank">uslove kupovine</a> i <a href="info.html?strana=povrat" target="_blank">pravila povrata</a>.</span></label>
+        <p class="opt__error" data-co-terms-err hidden>Potrebno je da prihvatiš uslove kupovine.</p>
+
+        <button class="btn btn--dark btn--block co-submit" type="submit" data-co-submit><svg><use href="#i-lock"/></svg><span>Poruči</span></button>
+        <p class="co-secure">Prototip — porudžbina se ne šalje. Na stagingu ovde ide prava naplata.</p>
+      </form>
+    </div>
+
+    <!-- ====== POTVRDA ====== -->
+    <section class="co-done" data-co-done hidden tabindex="-1">
+      <span class="co-done__icon"><svg><use href="#i-check"/></svg></span>
+      <p class="eyebrow">Porudžbina <span data-done-no></span></p>
+      <h2 class="h2">Hvala, <em data-done-name></em></h2>
+      <p class="co-done__lead" data-done-lead></p>
+      <div class="co-done__box">
+        <div class="co-lines co-lines--static" data-done-lines></div>
+        <dl class="co-totals" data-done-totals></dl>
+        <div class="co-done__meta" data-done-meta></div>
+      </div>
+      <div class="co-done__cta">
+        <a href="kategorija.html?kat=novo" class="btn btn--dark">Nastavi kupovinu</a>
+        <a href="index.html" class="btn btn--ghost">Početna</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="footer__flag" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <a href="index.html" class="logo logo--light" aria-label="FORTE — početna"><span class="logo__mark" aria-hidden="true"></span><span class="logo__flag" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      <p>Ženske jakne i prsluci za svaki dan. Toplina sa stavom.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg><use href="#i-tt"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__cols">
+      <details class="footer__col" open>
+        <summary>Kupovina <svg><use href="#i-chev"/></svg></summary>
+        <ul><li><a href="kategorija.html?kat=novo">Novo</a></li><li><a href="kategorija.html?kat=zene">Žene</a></li><li><a href="kategorija.html?kat=muskarci">Muškarci</a></li><li><a href="kategorija.html?kat=prsluci">Prsluci</a></li><li><a href="kategorija.html?kat=outlet">Outlet</a></li><li><a href="kategorija.html?kat=sve">Cela kolekcija</a></li></ul>
+      </details>
+      <details class="footer__col" open>
+        <summary>Pomoć <svg><use href="#i-chev"/></svg></summary>
+        <ul><li><a href="info.html?strana=dostava">Dostava</a></li><li><a href="info.html?strana=povrat">Zamena i povrat</a></li><li><a href="info.html?strana=velicine">Tabela veličina</a></li><li><a href="info.html?strana=placanje">Načini plaćanja</a></li><li><a href="info.html?strana=pitanja">Česta pitanja</a></li></ul>
+      </details>
+      <details class="footer__col" open>
+        <summary>Forte <svg><use href="#i-chev"/></svg></summary>
+        <ul><li><a href="info.html?strana=o-nama">O nama</a></li><li><a href="info.html?strana=prodavnice">Prodavnice</a></li><li><a href="info.html?strana=uslovi">Uslovi korišćenja</a></li><li><a href="info.html?strana=privatnost">Politika privatnosti</a></li><li><a href="info.html?strana=kolacici">Kolačići</a></li></ul>
+      </details>
+      <details class="footer__col" open>
+        <summary>Kontakt <svg><use href="#i-chev"/></svg></summary>
+        <ul><li><a href="tel:+381600000000">+381 60 000 0000</a></li><li><a href="mailto:info@vasdomen.rs">info@vasdomen.rs</a></li><li><a href="info.html?strana=kontakt">Kontakt forma</a></li><li><span>Pon–Pet 09–17h</span></li></ul>
+      </details>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© 2026 FORTE. Sva prava zadržana.</p>
+    <div class="pay">
+      <span>VISA</span><span>Mastercard</span><span>DinaCard</span><span>Pouzećem</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== OVERLAY + DRAWERS ====== -->
+<div class="scrim" data-scrim></div>
+
+<!-- Mobilni meni -->
+<aside class="drawer drawer--left" id="menu" aria-label="Meni" aria-hidden="true">
+  <div class="drawer__head">
+    <a href="index.html" class="logo" aria-label="FORTE — početna"><span class="logo__mark" aria-hidden="true"></span><span class="logo__flag" aria-hidden="true"><i></i><i></i><i></i></span></a>
+    <button class="icon-btn" aria-label="Zatvori" data-close><svg><use href="#i-close"/></svg></button>
+  </div>
+  <nav class="m-nav" data-m-nav aria-label="Meni"></nav>
+  <a href="index.html#model-sezone" class="m-feature" data-close>
+    <img src="assets/img/jgrey-3-sm.jpg" alt="">
+    <span><small>Model sezone</small>Kratka štepana jakna</span>
+  </a>
+  <div class="m-links">
+    <a href="#"><svg><use href="#i-user"/></svg>Moj nalog</a>
+    <a href="kategorija.html?lista=omiljeno"><svg><use href="#i-heart"/></svg>Lista želja</a>
+    <a href="info.html?strana=dostava"><svg><use href="#i-truck"/></svg>Dostava i praćenje</a>
+  </div>
+</aside>
+
+<!-- Korpa -->
+<aside class="drawer drawer--right" id="cart" aria-label="Korpa" aria-hidden="true">
+  <div class="drawer__head">
+    <h3>Korpa <span data-cart-count-text>(0)</span></h3>
+    <button class="icon-btn" aria-label="Zatvori" data-close><svg><use href="#i-close"/></svg></button>
+  </div>
+  <div class="ship-meter">
+    <p data-ship-text>Dodaj još <strong>10.000 RSD</strong> za besplatnu dostavu</p>
+    <div class="ship-meter__bar"><span data-ship-bar></span></div>
+  </div>
+  <div class="cart-items" data-cart-items></div>
+  <div class="cart-foot" data-cart-foot>
+    <div class="cart-foot__row"><span>Međuzbir</span><strong data-cart-subtotal>0 RSD</strong></div>
+    <p class="cart-foot__note">Dostava i popusti se obračunavaju na sledećem koraku.</p>
+    <a href="porucivanje.html" class="btn btn--dark btn--block">Završi kupovinu</a>
+    <button class="btn btn--ghost btn--block" data-close>Nastavi kupovinu</button>
+  </div>
+</aside>
+
+<!-- Pretraga -->
+<div class="search" id="search" aria-hidden="true" role="dialog" aria-label="Pretraga">
+  <div class="container">
+    <form class="search__bar" action="kategorija.html" role="search" data-search-form>
+      <svg><use href="#i-search"/></svg>
+      <input type="search" placeholder="Šta tražiš? npr. dugi prsluk, crna jakna…" aria-label="Pretraga" name="q" autocomplete="off" data-search-input>
+      <button class="icon-btn" aria-label="Zatvori pretragu" data-close><svg><use href="#i-close"/></svg></button>
+    </form>
+    <div class="search__body">
+      <div>
+        <h4>Popularne pretrage</h4>
+        <div class="chips">
+          <a href="kategorija.html?q=Dugi+prsluk">Dugi prsluk</a><a href="kategorija.html?q=Crna+jakna">Crna jakna</a><a href="kategorija.html?q=Roze+prsluk">Roze prsluk</a><a href="kategorija.html?q=Muška+jakna">Muška jakna</a><a href="kategorija.html?kat=outlet">Outlet</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="search__head"><span>Predlozi</span><a href="kategorija.html?kat=novo" data-search-all>Prikaži sve</a></h4>
+        <div class="search__products" data-search-products></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/checkout.js"></script>
+</body>
+</html>

@@ -23,7 +23,7 @@
         </div>
 
         <div class="opt">
-          <div class="opt__head"><span>Veličina: <strong data-size-name>Izaberi</strong></span><a href="#" class="opt__link"><svg><use href="#i-ruler"/></svg>Tabela veličina</a></div>
+          <div class="opt__head"><span>Veličina: <strong data-size-name>Izaberi</strong></span><a href="info.html?strana=velicine" class="opt__link" data-open="size-guide"><svg><use href="#i-ruler"/></svg>Tabela veličina</a></div>
           <div class="sizes" data-sizes role="radiogroup" aria-label="Izaberi veličinu"></div>
           <p class="opt__error" data-size-error hidden>Molimo izaberi veličinu.</p>
         </div>
@@ -103,3 +103,12 @@
   <div class="lightbox__track" data-lb-track></div>
   <span class="lightbox__count" data-lb-count></span>
 </div>
+
+<!-- tabela veličina -->
+<aside class="drawer drawer--right" id="size-guide" aria-label="Tabela veličina" aria-hidden="true">
+  <div class="drawer__head">
+    <h3>Tabela veličina</h3>
+    <button class="icon-btn" aria-label="Zatvori" data-close><svg><use href="#i-close"/></svg></button>
+  </div>
+  <div class="sg" data-size-guide></div>
+</aside>

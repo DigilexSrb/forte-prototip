@@ -1,0 +1,85 @@
+<main>
+  <!-- ====== ZAGLAVLJE KATEGORIJE ====== -->
+  <section class="plp-hero" data-plp-hero>
+    <div class="container">
+      <nav class="crumbs" aria-label="Putanja" data-crumbs></nav>
+      <div class="plp-hero__row">
+        <div>
+          <p class="eyebrow" data-plp-eyebrow></p>
+          <h1 class="plp-title" data-plp-title></h1>
+          <p class="plp-lead" data-plp-lead></p>
+        </div>
+        <form class="plp-search" action="kategorija.html" role="search" data-plp-search hidden>
+          <svg><use href="#i-search"/></svg>
+          <input type="search" name="q" aria-label="Pretraga" placeholder="Pretraži ponovo…" autocomplete="off">
+        </form>
+      </div>
+      <nav class="plp-sub" aria-label="Podkategorije" data-plp-sub></nav>
+    </div>
+  </section>
+
+  <!-- ====== TRAKA: filteri / sortiranje / prikaz ====== -->
+  <div class="plp-bar" data-plp-bar>
+    <div class="container plp-bar__inner">
+      <button class="plp-bar__filter" data-open="filters">
+        <svg><use href="#i-filter"/></svg><span>Filteri</span><b data-filter-count hidden></b>
+      </button>
+      <div class="plp-active" data-plp-active></div>
+      <span class="plp-bar__count" data-plp-count></span>
+      <label class="plp-sort">
+        <span class="only-desktop">Sortiraj:</span>
+        <select data-plp-sort aria-label="Sortiraj">
+          <option value="novo">Najnovije</option>
+          <option value="cena-rastuce">Cena: od najniže</option>
+          <option value="cena-opadajuce">Cena: od najviše</option>
+          <option value="popust">Najveći popust</option>
+          <option value="naziv">Naziv A–Š</option>
+        </select>
+        <svg><use href="#i-chev"/></svg>
+      </label>
+      <div class="plp-view" role="group" aria-label="Prikaz" data-plp-view></div>
+    </div>
+  </div>
+
+  <!-- ====== MREŽA PROIZVODA ====== -->
+  <div class="container">
+    <div class="plp-grid" data-plp-grid aria-live="polite"></div>
+
+    <div class="plp-more" data-plp-more hidden>
+      <p data-plp-progress-text></p>
+      <div class="plp-more__bar"><span data-plp-progress></span></div>
+      <button class="btn btn--ghost" data-plp-load>Učitaj još</button>
+    </div>
+  </div>
+
+  <!-- ====== OPIS KATEGORIJE (SEO) ====== -->
+  <section class="plp-about" data-plp-about hidden>
+    <div class="container plp-about__inner">
+      <h2 data-plp-about-title></h2>
+      <div data-plp-about-text></div>
+    </div>
+  </section>
+
+  <!-- ====== PREDNOSTI ====== -->
+  <section class="perks" aria-label="Prednosti kupovine">
+    <div class="container perks__grid">
+      <div class="perk"><svg><use href="#i-truck"/></svg><div><strong>Besplatna dostava</strong><span>za porudžbine preko 10.000 RSD</span></div></div>
+      <div class="perk"><svg><use href="#i-return"/></svg><div><strong>Zamena i povrat</strong><span>u roku od 14 dana</span></div></div>
+      <div class="perk"><svg><use href="#i-card"/></svg><div><strong>Plaćanje pouzećem</strong><span>ili platnom karticom</span></div></div>
+      <div class="perk"><svg><use href="#i-shield"/></svg><div><strong>Sigurna kupovina</strong><span>zaštićeno SSL plaćanje</span></div></div>
+    </div>
+  </section>
+</main>
+
+<!-- ====== FILTERI (panel) ====== -->
+<aside class="drawer drawer--left filters" id="filters" aria-label="Filteri" aria-hidden="true">
+  <div class="drawer__head">
+    <h3>Filteri</h3>
+    <button class="icon-btn" aria-label="Zatvori" data-close><svg><use href="#i-close"/></svg></button>
+  </div>
+  <div class="filters__body" data-filters></div>
+  <div class="filters__foot">
+    <button class="btn btn--ghost" data-filters-clear>Obriši sve</button>
+    <button class="btn btn--dark" data-close data-filters-apply>Prikaži</button>
+  </div>
+</aside>

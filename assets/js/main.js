@@ -7,7 +7,7 @@
 
   const F = window.FORTE;
   const { GROUPS, PRODUCTS, CATEGORIES, catBySlug, TYPES, byId, SIZES, FREE_SHIP, query, newest, colorsOf, typesOf,
-    siblings, title, url, catUrl, img, rsd, discount, colorsWord } = F;
+    siblings, title, url, catUrl, searchUrl, img, rsd, discount, colorsWord } = F;
   const countWord = n => `${n} ${n % 10 === 1 && n % 100 !== 11 ? 'proizvod' : 'proizvoda'}`;
 
   const $ = (s, r = document) => r.querySelector(s);
@@ -116,6 +116,7 @@
       b.setAttribute('aria-pressed', on);
     });
     store.set('forte-wish', [...wish]);
+    document.dispatchEvent(new CustomEvent('forte:wish'));
   };
   document.addEventListener('click', e => {
     const b = e.target.closest('[data-wish]');
@@ -167,8 +168,9 @@
           </div>
         </div>
       </div>`;
-    }).join('') : `<div class="cart-empty">${icon('bag')}<p>Tvoja korpa je prazna.</p><a href="index.html#novo" class="btn btn--dark" data-close>Pogledaj novo</a></div>`;
+    }).join('') : `<div class="cart-empty">${icon('bag')}<p>Tvoja korpa je prazna.</p><a href="${catUrl('novo')}" class="btn btn--dark" data-close>Pogledaj novo</a></div>`;
     store.set('forte-cart', cart);
+    document.dispatchEvent(new CustomEvent('forte:cart'));
   };
   const addToCart = (id, size) => {
     const line = cart.find(l => l.id === id && l.size === size);
@@ -177,6 +179,12 @@
     const p = byId[id];
     toast(`<img src="${img(p.imgs[0], true)}" alt=""><span>${GROUPS[p.group].name} (${p.color}, ${size}) je u korpi</span><button data-open="cart">Korpa</button>`, true);
     $('[data-open="cart"]').animate([{ transform: 'scale(1)' }, { transform: 'scale(1.25)' }, { transform: 'scale(1)' }], { duration: 400, easing: 'ease-out' });
+  };
+  const cartAPI = {
+    lines: () => cart,
+    setQty(i, q) { if (!cart[i]) return; cart[i].qty = q; if (q < 1) cart.splice(i, 1); renderCart(); },
+    remove(i) { cart.splice(i, 1); renderCart(); },
+    clear() { cart = []; renderCart(); }
   };
   cartItemsEl.addEventListener('click', e => {
     const q = e.target.closest('[data-qty]');
@@ -283,13 +291,13 @@
         </div>
       </div>
     </article>`;
-  const moreHTML = n => `<article class="card card--more">
-      <button class="card__media" data-rail-all>
+  const moreHTML = (n, href) => `<article class="card card--more">
+      <a class="card__media" href="${href}">
         <span><strong>+${n}</strong>Prikaži sve</span>
-      </button>
+      </a>
     </article>`;
   let state = { kat: 'all', tip: null, boja: null };
-  const setFilter = (next, { all = false, push = false } = {}) => {
+  const setFilter = (next, { push = false } = {}) => {
     if (!tabs) return;
     state = { kat: 'all', tip: null, boja: null, ...next };
     if (!catBySlug[state.kat]) state.kat = 'all';
@@ -298,7 +306,10 @@
     if (state.tip && TYPES[state.tip]) f.type = state.tip;
     if (state.boja) f.boja = state.boja;
     const list = newest(query(f));
-    const shown = all ? list : list.slice(0, RAIL_LIMIT);
+    const shown = list.slice(0, RAIL_LIMIT);
+    const allHref = catUrl(state.kat === 'all' ? 'sve' : state.kat, (state.tip ? '&tip=' + state.tip : '') + (state.boja ? '&boja=' + state.boja : ''));
+    const allLink = $('[data-rail-link]');
+    if (allLink) { allLink.href = allHref; allLink.innerHTML = `Pogledaj sve (${list.length}) ${icon('arrow')}`; }
 
     // naslov sekcije prati filter
     const cat = catBySlug[state.kat];
@@ -309,8 +320,8 @@
       : 'Novo u <em>ponudi</em>';
 
     renderRail((shown.map(cardHTML).join('')
-      + (list.length > shown.length ? moreHTML(list.length - shown.length) : '')
-      + (state.kat === 'all' && !all ? promoHTML() : '')) ||
+      + (list.length > shown.length ? moreHTML(list.length - shown.length, allHref) : '')
+      + (state.kat === 'all' ? promoHTML() : '')) ||
       '<p class="rail__empty">Trenutno nema proizvoda za ovaj izbor.</p>');
 
     if (push) {
@@ -328,17 +339,6 @@
       `<button role="tab" aria-selected="false" data-filter="${c.slug}">${c.name}</button>`).join('');
     tabs.addEventListener('click', e => {
       const b = e.target.closest('[data-filter]'); if (b) setFilter({ kat: b.dataset.filter }, { push: true });
-    });
-    track.addEventListener('click', e => {
-      if (e.target.closest('[data-rail-all]')) setFilter(state, { all: true });
-    });
-    // linkovi ka kategorijama (meni, pločice, futer) na početnoj se rešavaju bez ponovnog učitavanja
-    document.addEventListener('click', e => {
-      const a = e.target.closest('a[href^="index.html?kat="]');
-      if (!a) return;
-      e.preventDefault();
-      setFilter(fromParams(new URL(a.href).searchParams), { push: true });
-      $('#novo').scrollIntoView({ behavior: 'smooth' });
     });
     setFilter(fromParams(new URLSearchParams(location.search)));
   }
@@ -364,7 +364,9 @@
       </div>
       <div class="mega__col">
         <h4>Istaknuto</h4>
-        <a href="${catUrl(slug)}">Novo u ponudi</a>
+        <a href="${catUrl('novo')}">Novo u ponudi</a>
+        <a href="${catUrl('prsluci')}">Prsluci</a>
+        <a href="${catUrl('sve')}">Cela kolekcija</a>
         <a href="${catUrl('outlet')}" class="is-sale">Outlet</a>
       </div>
       ${top ? `<a class="mega__feature" href="${url(top)}">
@@ -385,7 +387,7 @@
         </div>
       </details>`;
     };
-    mNav.innerHTML = `<a href="index.html#novo" data-close>Novo ${icon('arrow')}</a>
+    mNav.innerHTML = `<a href="${catUrl('novo')}" data-close>Novo ${icon('arrow')}</a>
       ${sub('zene')}${sub('muskarci')}
       <a href="${catUrl('prsluci')}" data-close>Prsluci ${icon('arrow')}</a>
       <a href="${catUrl('outlet')}" class="is-sale" data-close>Outlet ${icon('arrow')}</a>`;
@@ -433,14 +435,26 @@
      PRETRAGA — predlozi
      ========================================================= */
   const sp = $('[data-search-products]');
+  const sAll = $('[data-search-all]');
   const renderSearch = q => {
-    q = (q || '').trim().toLowerCase();
-    const list = (q ? PRODUCTS.filter(p => (title(p) + ' ' + F.group(p).type + ' ' + p.sku).toLowerCase().includes(q)) : newest(PRODUCTS)).slice(0, 4);
+    q = (q || '').trim();
+    const found = q ? F.search(q) : newest(PRODUCTS);
+    const list = found.slice(0, 4);
+    if (sAll) {
+      sAll.hidden = q && !found.length;
+      sAll.href = q ? searchUrl(q) : catUrl('novo');
+      sAll.textContent = q ? `Svi rezultati (${found.length})` : 'Prikaži sve';
+    }
     sp.innerHTML = list.length ? list.map(p =>
       `<a href="${url(p)}"><img src="${img(p.imgs[0], true)}" alt="" loading="lazy">${GROUPS[p.group].name}<small>${p.color} · ${rsd(p.price)}</small></a>`).join('')
       : '<p style="color:var(--muted)">Nema rezultata.</p>';
   };
   $('[data-search-input]').addEventListener('input', e => renderSearch(e.target.value));
+  $('[data-search-form]')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const q = $('[data-search-input]').value.trim();
+    if (q) location.href = searchUrl(q);
+  });
 
   /* =========================================================
      VIDEO
@@ -488,6 +502,15 @@
   syncWish();
   observeReveal();
 
+  /* ---------- tabela veličina (PDP fioka + info stranica) ---------- */
+  const sizeGuideHTML = (gender, mark) => {
+    const t = F.SIZE_GUIDE[gender];
+    return `<div class="size-table"><table>
+      <thead><tr>${t.head.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>${t.rows.map(r => `<tr${r[0] === mark ? ' class="is-mark"' : ''}>${r.map((c, i) => i ? `<td>${c}</td>` : `<th>${c}</th>`).join('')}</tr>`).join('')}</tbody>
+    </table></div>`;
+  };
+
   // API za druge skripte (npr. stranica proizvoda)
-  F.ui = { $, $$, icon, toast, addToCart, syncWish, cardHTML, renderRail, priceHTML, observeReveal };
+  F.ui = { $, $$, icon, sizeGuideHTML, toast, store, addToCart, cart: cartAPI, wish, syncWish, cardHTML, renderRail, priceHTML, observeReveal, countWord, open, close };
 })();
