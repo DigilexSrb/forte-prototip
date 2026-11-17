@@ -31,10 +31,26 @@
   $('[data-pdp-title]').textContent = g.name;
   $('[data-pdp-color]').textContent = p.color;
   $('[data-pdp-sku]').textContent = p.sku;
-  $('[data-pdp-price]').innerHTML = priceHTML(p) + (p.was ? ` <span class="pill">−${discount(p)}%</span>` : '') + ' <small>PDV uključen</small>';
+  $('[data-pdp-price]').innerHTML = priceHTML(p) + (p.was ? ` <span class="pill">−${discount(p)}%</span>` : '') + ' <small>PDV uključen</small>'
+    // Zakon o trgovini čl. 37: prethodna cena = najniža cena u 30 dana pre sniženja
+    + (p.was ? `<span class="price-note">Precrtana cena je najniža cena u poslednjih 30 dana pre sniženja.</span>` : '');
   $('[data-pdp-desc]').textContent = g.desc;
   $('[data-pdp-details]').innerHTML = g.details.map(d => `<li>${d}</li>`).join('');
-  $('[data-pdp-care]').textContent = g.care;
+
+  /* deklaracija — Pravilnik o označavanju tekstilnih proizvoda čl. 16: sirovinski
+     sastav mora biti vidljiv pre kupovine, i kod kupovine preko interneta */
+  const S = F.SELLER;
+  const todo = t => `<span class="decl__todo">${t}</span>`;
+  $('[data-pdp-decl]').innerHTML = [
+    ['Sirovinski sastav', g.composition ? g.composition.join('<br>') + `<br>${todo('procenti po materijalu — dostavlja FORTE')}` : todo('dostavlja FORTE (obavezno pre objave)')],
+    ['Održavanje', g.care],
+    ['Šifra modela', p.sku],
+    ['Proizvođač', S.name],
+    ['Zemlja porekla', g.origin || todo(S.origin)]
+  ].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+
+  $('[data-pdp-ship]').innerHTML = `Dostava kurirskom službom na teritoriji Srbije za 1–3 radna dana, ${rsd(F.SHIP_PRICE)}, a za porudžbine preko ${rsd(F.FREE_SHIP)} besplatno.
+    Od kupovine možeš da odustaneš u roku od 14 dana od prijema, bez navođenja razloga. <a href="${F.infoUrl('povrat')}">Povrat i zamena</a> · <a href="${F.infoUrl('reklamacije')}">Reklamacije</a>`;
   $$('[data-pdp-wish]').forEach(b => { b.dataset.wish = p.id; });
 
   const tag = $('[data-pdp-tag]');

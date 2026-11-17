@@ -148,6 +148,7 @@
 
       <!-- ====== FORMA ====== -->
       <form class="co-form" data-co-form novalidate>
+        <p class="co-notice"><svg><use href="#i-truck"/></svg><span>Dostavljamo samo na teritoriji Srbije. Plaćanje pouzećem ili karticom (Visa, Mastercard, DinaCard).</span></p>
         <section class="co-box">
           <h2><span>1</span>Kontakt</h2>
           <div class="fields">
@@ -195,7 +196,11 @@
           </div>
         </section>
 
-        <label class="check co-terms"><input type="checkbox" name="uslovi" required><span>Pročitao/la sam i prihvatam <a href="info.html?strana=uslovi" target="_blank">uslove kupovine</a> i <a href="info.html?strana=povrat" target="_blank">pravila povrata</a>.</span></label>
+        <div class="co-final">
+          <p><span>Ukupno za plaćanje</span><strong data-co-final></strong></p>
+          <small>Cena sa PDV-om i dostavom. Od kupovine možeš da odustaneš u roku od 14 dana od prijema, bez navođenja razloga — <a href="info.html?strana=povrat" target="_blank">obrazac i uslovi za odustanak</a>.</small>
+        </div>
+        <label class="check co-terms"><input type="checkbox" name="uslovi" required><span>Pročitao/la sam i prihvatam <a href="info.html?strana=uslovi" target="_blank">uslove kupovine</a> i obaveštenje o <a href="info.html?strana=povrat" target="_blank">pravu na odustanak</a>.</span></label>
         <p class="opt__error" data-co-terms-err hidden>Potrebno je da prihvatiš uslove kupovine.</p>
 
         <button class="btn btn--dark btn--block co-submit" type="submit" data-co-submit><svg><use href="#i-lock"/></svg><span>Poruči</span></button>
@@ -243,11 +248,11 @@
       </details>
       <details class="footer__col" open>
         <summary>Pomoć <svg><use href="#i-chev"/></svg></summary>
-        <ul><li><a href="info.html?strana=dostava">Dostava</a></li><li><a href="info.html?strana=povrat">Zamena i povrat</a></li><li><a href="info.html?strana=velicine">Tabela veličina</a></li><li><a href="info.html?strana=placanje">Načini plaćanja</a></li><li><a href="info.html?strana=pitanja">Česta pitanja</a></li></ul>
+        <ul><li><a href="info.html?strana=dostava">Dostava</a></li><li><a href="info.html?strana=povrat">Povrat i zamena</a></li><li><a href="info.html?strana=reklamacije">Reklamacije</a></li><li><a href="info.html?strana=velicine">Tabela veličina</a></li><li><a href="info.html?strana=placanje">Načini plaćanja</a></li><li><a href="info.html?strana=pitanja">Česta pitanja</a></li></ul>
       </details>
       <details class="footer__col" open>
         <summary>Forte <svg><use href="#i-chev"/></svg></summary>
-        <ul><li><a href="info.html?strana=o-nama">O nama</a></li><li><a href="info.html?strana=prodavnice">Prodavnice</a></li><li><a href="info.html?strana=uslovi">Uslovi korišćenja</a></li><li><a href="info.html?strana=privatnost">Politika privatnosti</a></li><li><a href="info.html?strana=kolacici">Kolačići</a></li></ul>
+        <ul><li><a href="info.html?strana=o-nama">O nama</a></li><li><a href="info.html?strana=prodavnice">Prodavnice</a></li><li><a href="info.html?strana=uslovi">Uslovi kupovine</a></li><li><a href="info.html?strana=privatnost">Politika privatnosti</a></li><li><a href="info.html?strana=kolacici">Kolačići</a></li></ul>
       </details>
       <details class="footer__col" open>
         <summary>Kontakt <svg><use href="#i-chev"/></svg></summary>
@@ -257,6 +262,7 @@
   </div>
   <div class="container footer__bottom">
     <p>© 2026 FORTE. Sva prava zadržana.</p>
+    <p class="footer__legal" data-seller-line></p>
     <div class="pay">
       <span>VISA</span><span>Mastercard</span><span>DinaCard</span><span>Pouzećem</span>
     </div>

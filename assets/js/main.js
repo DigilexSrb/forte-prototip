@@ -496,6 +496,12 @@
   /* ---------- futer: na telefonu kolone su zatvorene (harmonika) ---------- */
   if (matchMedia('(max-width:767px)').matches) $$('.footer__col').forEach(d => d.removeAttribute('open'));
 
+  /* podaci o trgovcu (ZET čl. 6, Zakon o trgovini čl. 32) i obaveštenje o
+     vansudskom rešavanju sporova (ZZP čl. 173) — stalno vidljivi u futeru */
+  const S = F.SELLER, sl = $('[data-seller-line]');
+  if (sl) sl.innerHTML = `${S.name} · ${S.address} · MB ${S.mb} · PIB ${S.pib}<br>
+    Trgovac je po zakonu obavezan da učestvuje u <a href="${F.infoUrl('uslovi')}#ods">vansudskom rešavanju potrošačkih sporova</a>.`;
+
   /* ---------- init ---------- */
   renderSearch('');
   renderCart();

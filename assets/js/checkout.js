@@ -69,7 +69,9 @@
     $('[data-co-ship-opt]').textContent = c.ship ? rsd(c.ship) : 'Besplatno';
     $('[data-co-total]').textContent = rsd(c.total);
     $('[data-co-total-top]').textContent = rsd(c.total);
-    $('[data-co-submit] span').textContent = `Poruči · ${rsd(c.total)}`;
+    $('[data-co-final]').textContent = rsd(c.total);
+    // ZZP čl. 32 st. 4: dugme mora jasno da kaže da porudžbina obavezuje na plaćanje
+    $('[data-co-submit] span').textContent = 'Poruči uz obavezu plaćanja';
 
     const left = FREE_SHIP - (c.sub - c.disc);
     $('.co-meter').classList.toggle('is-free', left <= 0);
@@ -167,7 +169,7 @@
     const card = data.get('placanje') === 'kartica';
     $('[data-done-no]').textContent = no;
     $('[data-done-name]').textContent = data.get('ime') + '!';
-    $('[data-done-lead]').textContent = `Porudžbina je primljena. Potvrdu smo poslali na ${data.get('email')}, a kurir će te pozvati pre isporuke (1–3 radna dana).`;
+    $('[data-done-lead]').textContent = `Porudžbina je primljena. Potvrdu porudžbine sa uslovima kupovine i obrascem za odustanak poslali smo na ${data.get('email')}. Kurir će te pozvati pre isporuke (1–3 radna dana).`;
     $('[data-done-lines]').innerHTML = c.lines.map((l, i) => lineHTML(l, i, false)).join('');
     $('[data-done-totals]').innerHTML = totalsHTML(c);
     $('[data-done-meta]').innerHTML = `
